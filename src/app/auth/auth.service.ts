@@ -41,12 +41,4 @@ export class AuthService {
 
     return null;
   }
-  public async isAuthenticated()
-  {
-      // return await this.store.pipe(
-      //   select(state => state.auth),
-      //   filter(userState => userState.isAuthenticated)
-      // )
-  }
-
 }
