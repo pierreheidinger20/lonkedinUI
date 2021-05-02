@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
+
+import * as authActions from '../auth.action';
+import { UserState } from '../userState.model';
 
 @Component({
   selector: 'app-login',
@@ -16,11 +21,12 @@ export class LoginComponent implements OnInit {
     private formBuilder : FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private store:Store<AppState>
   ) { }
   
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -34,6 +40,11 @@ export class LoginComponent implements OnInit {
     if (this.form.invalid) {
         return;
     }
+
+    let userState = new UserState();
+    userState.email = this.form.get('email')?.value;
+
+    this.store.dispatch(authActions.login({ userState: userState}));
 
     const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     this.router.navigateByUrl(returnUrl);
