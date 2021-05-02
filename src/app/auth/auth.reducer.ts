@@ -15,9 +15,10 @@ const _authReducer = createReducer(
         };
     }),
     on(logout,(state) => {
-        state.isAuthenticated = false;
-        state.email = undefined;
-        return state;
+        return {
+            isAuthenticated : false,
+            email : ''
+        };
     })
 );
 
