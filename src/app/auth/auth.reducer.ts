@@ -9,8 +9,10 @@ export const initialState:UserState = {
 const _authReducer = createReducer(
     initialState,
     on(login,(state ,{ userState }) => {
-        userState.isAuthenticated = true;
-        return userState;
+        return {
+            isAuthenticated : true,
+            email : userState.email
+        };
     }),
     on(logout,(state) => {
         state.isAuthenticated = false;
