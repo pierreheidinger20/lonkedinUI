@@ -1,0 +1,25 @@
+<br>
+<br>
+<br>  
+<div class="wrapper fadeInDown">
+
+  <div id="formContent">
+
+<br>
+    <form [formGroup]="form"  (ngSubmit)="onSubmit()">
+      <input formControlName="username" type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+        <div *ngIf="submitted && f.username.errors" class="text-danger">
+          <div>Username is required</div>
+        </div>
+      <input formControlName="password" type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+        <div *ngIf="submitted && f.password.errors" class="text-danger">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>
