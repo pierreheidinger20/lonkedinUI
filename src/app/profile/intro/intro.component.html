@@ -1,0 +1,17 @@
+
+
+<div class="card">
+    <div class="card-body">
+      <button  (click)="openEditProfile()" type="button" class="btn btn-success px-3">
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      </button>
+      <br>
+      <br>
+      <h5 class="card-title">{{ profile.firstName}} {{ profile.lastName }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ profile.company }}</h6>
+      <p class="card-text">{{ profile.presentation }}</p>
+      <div class="card-text">{{ profile.address}}</div>
+      <div class="card-text">{{profile.city }}</div>
+      <div class="card-text">Phone Number  {{ profile.phoneNumber }}</div>
+    </div>
+</div>
