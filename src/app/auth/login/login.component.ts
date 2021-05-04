@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
 
     this._store.select(state => state.auth)
                .subscribe(auth => {
-                   debugger;
                    if(auth.isAuthenticated)
                    {
                     this.goToHome();

@@ -3,9 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { select, Store } from '@ngrx/store';
 import { AppState } from '../app.reducer';
 import { UserState } from './userState.model';
-import { filter } from 'rxjs/operators';
-
 import * as authActions from './auth.action';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +15,8 @@ export class AuthService {
     public _angularFireAuth:AngularFireAuth,
     private store:Store<AppState>
   ) 
-  { }
+  { 
+  }
 
 
   public async logIn(email:string,password:string)
@@ -26,11 +26,15 @@ export class AuthService {
       const { user }  = await this._angularFireAuth.signInWithEmailAndPassword(email,password);
 
       if(user)
-      {
+      {   
         let userState = new UserState();
         userState.email = email;
+        userState.isAuthenticated = true;
+        userState.token = await user.getIdToken();
+
         this.store.dispatch(authActions.login({ userState: userState}));
       }
+
       
       return user;
 

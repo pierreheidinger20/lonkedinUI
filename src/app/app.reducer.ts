@@ -1,13 +1,17 @@
 import { ActionReducerMap } from "@ngrx/store";
 import { UserState } from "./auth/userState.model";
 
-import * as fromLogin from "./auth/auth.reducer" 
+import * as fromAuth from "./auth/auth.reducer" 
+import * as fromProfile from "./profile/profile.reducer" 
+import { Profile } from "./profile/profile.model";
 
 export interface AppState
 {
-    auth:UserState
+    auth:UserState,
+    profile:Profile
 }
 
 export  const appReducers :ActionReducerMap<AppState> = {
-    auth: fromLogin.authReducer,
+    auth: fromAuth.authReducer,
+    profile : fromProfile.profileReducer
 }
