@@ -6,6 +6,8 @@ import { ProfileService } from './profile.service';
 import * as profileActions from './profile.action';
 import { ExperienceService } from './experience/experience.service';
 import { addExperiences } from './experience/experience.action';
+import { EducationService } from './education/education.service';
+import { addEducations } from './education/education.action';
 
 @Component({
   selector: 'app-profile',
@@ -16,10 +18,12 @@ export class ProfileComponent implements OnInit {
 
   loadIntro:boolean = false;
   loadExperience:boolean = false;
+  loadEducation:boolean = false;
 
   constructor(
     private _profilesService:ProfileService,
     private _experienceService: ExperienceService,
+    private _educationService: EducationService,
     private _store:Store<AppState>
     ) { }
 
@@ -46,6 +50,13 @@ export class ProfileComponent implements OnInit {
             this.loadExperience = true;
         });
         
+        this._educationService.getEducations(auth.email ?? "")
+        .subscribe(educations => {
+        
+          this._store.dispatch(addEducations({ educations : educations}));
+          this.loadEducation = true;
+      });
+
       })
   }
 }

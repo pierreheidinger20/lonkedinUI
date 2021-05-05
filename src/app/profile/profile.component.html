@@ -12,3 +12,10 @@
     </div>
     <app-experience *ngIf="loadExperience" ></app-experience>
   </div>
+  <br>
+  <div class="container-fluid">
+    <div *ngIf="!loadEducation" class="spinner-border" role="status">
+      <span class="visually-hidden text-dark">Loading...</span>
+    </div>
+    <app-education *ngIf="loadEducation" ></app-education>
+  </div>

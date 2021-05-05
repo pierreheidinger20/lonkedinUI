@@ -44,7 +44,6 @@ export class ExperienceComponent implements OnInit {
   }
   deleteExperenci(_id:string)
   {
-    debugger;
     Swal.fire({
       title: 'Do you want to delete?',
       showDenyButton: true,

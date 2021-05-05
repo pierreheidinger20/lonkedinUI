@@ -1,0 +1,34 @@
+
+
+<div class="card">
+    <div class="card-body">
+      <button (click)="openAddEducation()"  type="button" class="btn btn-primary px-3">
+        <i class="fa fa-plus-square" aria-hidden="true"></i>
+      </button>
+      <br>
+      <br>
+      <h5>Educations & Certifications</h5>
+      <br>
+      <div class="list-group">
+        <a  *ngFor="let education of educations" class="list-group-item list-group-item-action" aria-current="true">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ education.school }}</h5>
+            <small> 
+                <button (click)="editEducation(education._id)"   type="button" class="btn btn-success px-3">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+                &nbsp;
+                <button (click)="deleteEducation(education._id)"  type="button" class="btn btn-danger px-3">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            </small>
+          </div>
+          <p class="mb-1">{{ education.degree }}</p>
+          <small *ngIf="education.credentialUrl">
+            <a href="{{education.credentialUrl}}" target="_blank">See credential</a>
+          </small>
+          
+        </a>
+      </div>
+    </div>
+</div>
