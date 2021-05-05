@@ -1,0 +1,32 @@
+
+
+<div class="card">
+    <div class="card-body">
+      <button (click)="openAddExperience()"  type="button" class="btn btn-primary px-3">
+        <i class="fa fa-plus-square" aria-hidden="true"></i>
+      </button>
+      <br>
+      <br>
+      <h5>Experiences</h5>
+      <br>
+      <div class="list-group">
+        <a  *ngFor="let experience of experiences" class="list-group-item list-group-item-action" aria-current="true">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{experience.company}}</h5>
+            <small> {{experience.startDate | date }} - {{experience.endDate | date}}
+                &nbsp;
+                <button (click)="openEditExperience(experience._id)"  type="button" class="btn btn-success px-3">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+                &nbsp;
+                <button (click)="deleteExperenci(experience._id)"  type="button" class="btn btn-danger px-3">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+            </small>
+          </div>
+          <p class="mb-1">{{ experience.title }}</p>
+          <small>{{ experience.description }}</small>
+        </a>
+      </div>
+    </div>
+</div>
