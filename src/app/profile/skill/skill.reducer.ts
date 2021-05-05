@@ -13,7 +13,6 @@ const _skillReducer = createReducer(
         return skills;
     }),
     on(setSkill,(state ,{ skill }) => {
-        debugger;
         return state.map(skillState => {
 
             if(skillState._id == skill._id)

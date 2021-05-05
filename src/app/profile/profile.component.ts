@@ -67,7 +67,6 @@ export class ProfileComponent implements OnInit {
 
         this._skillService.getSkills(email ?? "")
         .subscribe(skilss => {
-        
           this._store.dispatch(addSkills({ skills : skilss}));
           this.loadSkills = true;
         });

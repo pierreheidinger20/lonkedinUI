@@ -17,6 +17,16 @@
           </div>
         </div>
         <div class="form-outline mb-4">
+          <input type="text"  id="percentual" formControlName="percentual"  placeholder="Percentual name" class="form-control" />
+          <div *ngIf="(f.percentual.touched || submit ) && f.percentual.invalid" class="text-danger">
+            <div *ngIf="f.percentual.errors?.required">Percentual is required.</div>
+            <div *ngIf="f.percentual.errors?.maxlength">Maximun 3 character are required.</div>
+            <div *ngIf="f.percentual.errors?.max">Maximun number 100.</div>
+            <div *ngIf="f.percentual.errors?.min">Minimun number 1.</div>
+          </div>
+        </div>
+
+        <!-- <div class="form-outline mb-4">
             <select class="form-select" id="nivel"  placeholder="dsad" formControlName="nivel" aria-label="Default select example">
                 <option selected value="" >Nivel Skill</option>
                 <option value="1">Basic</option>
@@ -26,7 +36,7 @@
             <div *ngIf="(f.nivel.touched || submit ) && f.nivel.invalid" class="text-danger">
                 <div *ngIf="f.nivel.errors?.required">Nivel is required.</div>
             </div> 
-        </div>
+        </div> -->
 
         <button class="btn btn-danger btn-block" type="submit">Save</button>
       </form>

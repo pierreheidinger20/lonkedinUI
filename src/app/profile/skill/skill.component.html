@@ -8,20 +8,28 @@
       <br>
       <br>
       <h5>Skills & endorsements</h5>
-      <br>
-      <ol class="list-group list-group-numbered">
-        <li *ngFor="let skill of skills" class="list-group-item d-flex justify-content-between align-items-start">
-          <div class="ms-2 me-auto">
-            <div class="fw-bold">{{ skill.name }}</div>
+
+      <div class="list-group">
+        <a   *ngFor="let skill of skills" class="list-group-item list-group-item-action" aria-current="true">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ skill.name }}</h5>
+            <small>
+              &nbsp;
+              &nbsp;
+              <button *ngIf="isAuthenticaded" (click)="deleteSkill(skill._id)"  type="button" class="btn btn-danger px-3">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </button>
+            </small>
           </div>
-          <span class="badge bg-primary rounded-pill">{{ skill.nivel }}
-          </span>
-          &nbsp;
-          &nbsp;
-          <button *ngIf="isAuthenticaded" (click)="deleteSkill(skill._id)"  type="button" class="btn btn-danger px-3">
-            <i class="fa fa-trash" aria-hidden="true"></i>
-          </button>
-        </li>
-      </ol>
+          <br>
+          <div class="mb-1">
+            <p><ngb-progressbar [showValue]="true" type="info" [value]="skill.percentual"></ngb-progressbar></p>
+          </div>
+          <small>
+          </small>
+         
+        </a>
+       
+      </div>
     </div>
 </div>
