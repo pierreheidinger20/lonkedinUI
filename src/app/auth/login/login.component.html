@@ -15,7 +15,13 @@
         <div *ngIf="submitted && f.password.errors" class="text-danger">
           <div *ngIf="f.password.errors.required">Password is required</div>
         </div>
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <input  type="submit" class="fadeIn fourth" value="Log In">
+      <div *ngIf="loading" class="spinner-border" role="status">
+        <span class="visually-hidden text-dark">Loading...</span>
+      </div>
+      <div *ngIf="erroCredentials" class="text-danger">
+        <div *ngIf="erroCredentials">Incorrect username or password</div>
+      </div>
     </form>
     <div id="formFooter">
       <a class="underlineHover" href="#">Forgot Password?</a>

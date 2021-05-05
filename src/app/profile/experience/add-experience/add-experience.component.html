@@ -1,0 +1,77 @@
+<div class="modal-header">
+    <h4 class="modal-title">Add Experience</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
+
+        <div class="form-outline mb-4">
+          <input type="text" id="company" formControlName="company"  placeholder="Company name" class="form-control" />
+          <div *ngIf="(f.company.touched || submit ) && f.company.invalid" class="text-danger">
+            <div *ngIf="f.company.errors?.required">Company is required.</div>
+            <div *ngIf="f.company.errors?.maxlength">Maximun 50 character are required.</div>
+          </div>
+        </div>
+        <div class="form-outline mb-4">
+            <input type="text" id="title" formControlName="title"  placeholder="Title" class="form-control" />
+            <div *ngIf="(f.title.touched || submit ) && f.title.invalid" class="text-danger">
+              <div *ngIf="f.title.errors?.required">Company is required.</div>
+              <div *ngIf="f.title.errors?.maxlength">Maximun 50 character are required.</div>
+            </div>
+        </div>
+
+        <div class="form-outline mb-4">
+            <!-- <input type="text" id="startDate" formControlName="startDate"  placeholder="start Date" class="form-control" /> -->\
+            <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control" formControlName="startDate"  placeholder="yyyy-mm-dd"
+                         name="startDate"  readonly ="true" ngbDatepicker #d1="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="d1.toggle()" type="button">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+            </div>
+            <div *ngIf="(f.startDate.touched || submit ) && f.startDate.invalid" class="text-danger">
+              <div *ngIf="f.startDate.errors?.required">Company is required.</div>
+              <div *ngIf="f.startDate.errors?.maxlength">Maximun 50 character are required.</div>
+            </div>
+        </div>
+
+        <div class="form-outline mb-4">
+            <div class="form-group">
+                <div class="input-group">
+                  <input readonly="true" class="form-control" formControlName="endDate"  placeholder="yyyy-mm-dd"
+                         name="endDate"  ngbDatepicker #d2="ngbDatepicker" >
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" (click)="d2.toggle()" type="button">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+            </div>
+            <div *ngIf="(f.endDate.touched || submit ) && f.endDate.invalid" class="text-danger">
+              <div *ngIf="f.endDate.errors?.required">Company is required.</div>
+              <div *ngIf="f.endDate.errors?.maxlength">Maximun 50 character are required.</div>
+            </div>
+        </div>
+
+        <div class="form-outline mb-4">
+            <textarea class="form-control" id="description"  formControlName="description" placeholder="Description"  rows="3"></textarea>
+            <div *ngIf="(f.description.touched || submit ) && f.description.invalid" class="text-danger">
+              <div *ngIf="f.description.errors?.maxlength">Maximun 300 character are required.</div>
+            </div>
+        </div>
+
+        <button class="btn btn-danger btn-block" type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

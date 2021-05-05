@@ -24,6 +24,8 @@ import { AppConfig } from './config/app-config';
 import { EditProfileComponent } from './profile/intro/edit-profile/edit-profile.component';
 import { ErrorIntercept } from './common/error.interceptor';
 import { TokenInterceptor } from './auth/token.interceptor';
+import { ExperienceComponent } from './profile/experience/experience.component';
+import { AddExperienceComponent } from './profile/experience/add-experience/add-experience.component';
 
 
 export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
@@ -31,6 +33,11 @@ export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
     return jsonAppConfigService.load();
   };
 }
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { EditExperienceComponent } from './profile/experience/edit-experience/edit-experience.component'
+
+// export const options: Partial<IConfig> | (() => Partial<IConfig>) = null ;
+
 
 @NgModule({
   declarations: [
@@ -40,7 +47,10 @@ export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
     IntroComponent,
     NavbarComponent,
     ProfileComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    ExperienceComponent,
+    AddExperienceComponent,
+    EditExperienceComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +66,8 @@ export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    NgbModule
+    NgbModule,
+    NgxMaskModule.forRoot()
     
   ],
   providers: [

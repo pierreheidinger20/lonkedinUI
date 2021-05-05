@@ -1,5 +1,14 @@
 
  <div class="container-fluid">
-    <app-intro></app-intro>
+    <div *ngIf="!loadIntro" class="spinner-border" role="status">
+      <span class="visually-hidden text-dark">Loading...</span>
+    </div>
+    <app-intro *ngIf="loadIntro"></app-intro>
   </div>
-  
+  <br>
+  <div class="container-fluid">
+    <div *ngIf="!loadExperience" class="spinner-border" role="status">
+      <span class="visually-hidden text-dark">Loading...</span>
+    </div>
+    <app-experience *ngIf="loadExperience" ></app-experience>
+  </div>

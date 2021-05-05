@@ -12,14 +12,15 @@ const _authReducer = createReducer(
         return {
             isAuthenticated : true,
             email : userState.email,
-            token : userState.token
+            token : userState.token,
+            logOut : false
         };
     }),
     on(logout,(state) => {
         return {
+            ...state,
             isAuthenticated : false,
-            email : '',
-            token : ''
+            logOut : true
         };
     })
 );

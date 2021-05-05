@@ -16,6 +16,8 @@ import { UserState } from '../userState.model';
 export class LoginComponent implements OnInit {
 
   submitted = false;
+  erroCredentials: boolean = false;
+  loading:boolean = false;
   form = new FormGroup({});
 
   constructor(
@@ -28,7 +30,7 @@ export class LoginComponent implements OnInit {
 
     this._store.select(state => state.auth)
                .subscribe(auth => {
-                   if(auth.isAuthenticated)
+                   if(auth.isAuthenticated && !(auth.logOut ?? true))
                    {
                     this.goToHome();
                    }
@@ -48,10 +50,12 @@ export class LoginComponent implements OnInit {
   async onSubmit(){
 
     this.submitted = true;
-
+ 
     if (this.form.invalid) {
         return;
     }
+
+    this.loading = true;
 
     let email = this.form.get("email")?.value;
     let password = this.form.get("password")?.value;
@@ -61,6 +65,10 @@ export class LoginComponent implements OnInit {
     if(user)
     {
       this.goToHome();
+    }else
+    {
+      this.erroCredentials = true;
+      this.loading = false;
     }
    
   }

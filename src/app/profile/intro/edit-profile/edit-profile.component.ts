@@ -39,7 +39,6 @@ export class EditProfileComponent implements OnInit {
   }
 
   onSubmit(){
-    debugger;
     this.submit = true;
 
     if(this.userForm.valid)
