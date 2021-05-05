@@ -19,3 +19,10 @@
     </div>
     <app-education *ngIf="loadEducation" ></app-education>
   </div>
+  <br>
+  <div class="container-fluid">
+    <div *ngIf="!loadSkills" class="spinner-border" role="status">
+      <span class="visually-hidden text-dark">Loading...</span>
+    </div>
+    <app-skill *ngIf="loadSkills" ></app-skill>
+  </div>

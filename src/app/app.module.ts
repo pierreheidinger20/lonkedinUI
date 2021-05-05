@@ -37,7 +37,10 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { EditExperienceComponent } from './profile/experience/edit-experience/edit-experience.component';
 import { EducationComponent } from './profile/education/education.component';
 import { AddEducationComponent } from './profile/education/add-education/add-education.component';
-import { EditEducationComponent } from './profile/education/edit-education/edit-education.component'
+import { EditEducationComponent } from './profile/education/edit-education/edit-education.component';
+import { SkillComponent } from './profile/skill/skill.component';
+import { AddSkillComponent } from './profile/skill/add-skill/add-skill.component';
+import { EditSkillComponent } from './profile/skill/edit-skill/edit-skill.component'
 
 // export const options: Partial<IConfig> | (() => Partial<IConfig>) = null ;
 
@@ -56,7 +59,10 @@ import { EditEducationComponent } from './profile/education/edit-education/edit-
     EditExperienceComponent,
     EducationComponent,
     AddEducationComponent,
-    EditEducationComponent
+    EditEducationComponent,
+    SkillComponent,
+    AddSkillComponent,
+    EditSkillComponent
   ],
   imports: [
     BrowserModule,
