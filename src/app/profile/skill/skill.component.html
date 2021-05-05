@@ -2,7 +2,7 @@
 
 <div class="card">
     <div class="card-body">
-      <button (click) = "openAddSkill()"type="button" class="btn btn-primary px-3">
+      <button *ngIf="isAuthenticaded" (click) = "openAddSkill()"type="button" class="btn btn-primary px-3">
         <i class="fa fa-plus-square" aria-hidden="true"></i>
       </button>
       <br>
@@ -18,7 +18,7 @@
           </span>
           &nbsp;
           &nbsp;
-          <button (click)="deleteSkill(skill._id)"  type="button" class="btn btn-danger px-3">
+          <button *ngIf="isAuthenticaded" (click)="deleteSkill(skill._id)"  type="button" class="btn btn-danger px-3">
             <i class="fa fa-trash" aria-hidden="true"></i>
           </button>
         </li>

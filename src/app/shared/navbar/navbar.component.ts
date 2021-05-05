@@ -13,6 +13,7 @@ import { logout } from '../../auth/auth.action'
 export class NavbarComponent implements OnInit {
 
   email?:string;
+  isAuthenticated:boolean = false;
 
   constructor(
     private _store:Store<AppState>,
@@ -21,7 +22,10 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._store.select(state => state.auth).subscribe(auth => this.email = auth.email )
+    this._store.select(state => state.auth).subscribe(auth => {
+      this.email = auth.email;
+      this.isAuthenticated = auth.isAuthenticated;
+    })
   }
 
   public logOut() :void {

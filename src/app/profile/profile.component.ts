@@ -10,6 +10,7 @@ import { EducationService } from './education/education.service';
 import { addEducations } from './education/education.action';
 import { SkillService } from './skill/skill.service';
 import { addSkills } from './skill/skill.action';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -28,7 +29,8 @@ export class ProfileComponent implements OnInit {
     private _experienceService: ExperienceService,
     private _educationService: EducationService,
     private _skillService: SkillService,
-    private _store:Store<AppState>
+    private _store:Store<AppState>,
+    private acticedRoute:ActivatedRoute
     ) { }
 
   ngOnInit(): void {
@@ -39,29 +41,31 @@ export class ProfileComponent implements OnInit {
 
     this._store.select(state => state.auth)
       .subscribe(auth => {
+        
+        let email = auth?.email ?? this.acticedRoute.snapshot.params.id;
 
-        this._profilesService.getProfile(auth.email ?? "")
+        this._profilesService.getProfile(email ?? "")
           .subscribe(profile => {
 
             this._store.dispatch(profileActions.setProfile({ profile : profile }))
             this.loadIntro = true;
         });
 
-        this._experienceService.getExperiences(auth.email ?? "")
+        this._experienceService.getExperiences(email ?? "")
           .subscribe(experiences => {
           
             this._store.dispatch(addExperiences({ experiences : experiences}));
             this.loadExperience = true;
         });
         
-        this._educationService.getEducations(auth.email ?? "")
+        this._educationService.getEducations(email ?? "")
         .subscribe(educations => {
         
           this._store.dispatch(addEducations({ educations : educations}));
           this.loadEducation = true;
         });
 
-        this._skillService.getSkills(auth.email ?? "")
+        this._skillService.getSkills(email ?? "")
         .subscribe(skilss => {
         
           this._store.dispatch(addSkills({ skills : skilss}));

@@ -17,6 +17,7 @@ import { ExperienceService } from './experience.service';
 export class ExperienceComponent implements OnInit {
 
   experiences:Experience[] = [];
+  isAuthenticaded:boolean = false;
 
   constructor(
     private _store:Store<AppState>,
@@ -24,10 +25,11 @@ export class ExperienceComponent implements OnInit {
     private modalService: NgbModal
   ) 
   { 
-    this._store.select( state => state.experiences).subscribe(experiences => {
-      this.experiences = experiences;
+    this._store.subscribe(state =>{
+      this.experiences = state.experiences;
       this.experiences = this.experiences.slice().sort((a,b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
-    });
+      this.isAuthenticaded = state.auth.isAuthenticated;
+    })
   }
 
   ngOnInit(): void {

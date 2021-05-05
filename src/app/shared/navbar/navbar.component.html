@@ -5,14 +5,19 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul *ngIf="isAuthenticated" class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" routerLink="/home" aria-current="page">Home</a>
           </li>
         </ul>
+        <ul *ngIf="!isAuthenticated" class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/login" aria-current="page">Login</a>
+          </li>
+        </ul>
         <div class="d-flex text-white">
          
-            <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+            <div *ngIf="isAuthenticated" class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
                 <button class="btn btn-secondary" id="dropdownManual" ngbDropdownAnchor (focus)="myDrop.open()">
                     <i class="fa fa-user-circle" aria-hidden="true">
                         {{email}}
