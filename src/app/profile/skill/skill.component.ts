@@ -25,6 +25,7 @@ export class SkillComponent implements OnInit {
   { 
     this._store.subscribe(state =>{
       this.skills = state.skills;
+      console.log(this.skills);
       this.isAuthenticaded = state.auth.isAuthenticated;
     });
   }

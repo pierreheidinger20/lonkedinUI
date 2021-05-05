@@ -37,7 +37,7 @@ export class AddSkillComponent implements OnInit {
   onSubmit()
   {
     this.submit = true;
-
+    console.log(this.userForm.controls)
     if(this.userForm.valid)
     {
       this._store.select(state => state.auth).subscribe(auth => {
@@ -67,8 +67,9 @@ export class AddSkillComponent implements OnInit {
   private loadGroupForm()
   {
     return this.userForm = this.formBuilder.group({
-      name: [this.skill.name, [Validators.required, Validators.max(50)]],
-      nivel: ['', [Validators.required]],
+      name: [this.skill.name, [Validators.required]],
+      // nivel: ['', [Validators.required]],
+      percentual : [0, [Validators.required, Validators.maxLength(3),Validators.min(1),Validators.max(100)]]
     });
   }
 }
