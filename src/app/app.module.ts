@@ -34,7 +34,10 @@ export function initializerFn(jsonAppConfigService: JsonAppConfigService) {
   };
 }
 import { NgxMaskModule, IConfig } from 'ngx-mask';
-import { EditExperienceComponent } from './profile/experience/edit-experience/edit-experience.component'
+import { EditExperienceComponent } from './profile/experience/edit-experience/edit-experience.component';
+import { EducationComponent } from './profile/education/education.component';
+import { AddEducationComponent } from './profile/education/add-education/add-education.component';
+import { EditEducationComponent } from './profile/education/edit-education/edit-education.component'
 
 // export const options: Partial<IConfig> | (() => Partial<IConfig>) = null ;
 
@@ -50,7 +53,10 @@ import { EditExperienceComponent } from './profile/experience/edit-experience/ed
     EditProfileComponent,
     ExperienceComponent,
     AddExperienceComponent,
-    EditExperienceComponent
+    EditExperienceComponent,
+    EducationComponent,
+    AddEducationComponent,
+    EditEducationComponent
   ],
   imports: [
     BrowserModule,

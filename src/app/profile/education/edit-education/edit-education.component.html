@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h4 class="modal-title">Add Education</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+
+      <form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate>
+
+        <div class="form-outline mb-4">
+          <input type="text" id="school" formControlName="school"  placeholder="School name" class="form-control" />
+          <div *ngIf="(f.school.touched || submit ) && f.school.invalid" class="text-danger">
+            <div *ngIf="f.school.errors?.required">School is required.</div>
+            <div *ngIf="f.school.errors?.maxlength">Maximun 50 character are required.</div>
+          </div>
+        </div>
+        <div class="form-outline mb-4">
+            <input type="text" id="degree" formControlName="degree"  placeholder="Degree name" class="form-control" />
+            <div *ngIf="(f.degree.touched || submit ) && f.degree.invalid" class="text-danger">
+              <div *ngIf="f.degree.errors?.required">Degree is required.</div>
+              <div *ngIf="f.degree.errors?.maxlength">Maximun 50 character are required.</div>
+            </div>
+        </div>
+
+        <div class="form-outline mb-4">
+            <input type="text" id="credentialUrl" formControlName="credentialUrl"  placeholder="Credential url" class="form-control" />
+            <div *ngIf="(f.credentialUrl.touched || submit ) && f.credentialUrl.invalid" class="text-danger">
+              <div *ngIf="f.credentialUrl.errors?.maxlength">Maximun 300 character are required.</div>
+            </div>
+        </div>
+
+        <button class="btn btn-danger btn-block" type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

@@ -35,8 +35,7 @@ export class EditExperienceComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.id);
-
+   
     this._store.select(state => state.experiences)
     .subscribe(experiences =>{
       this.experience = experiences.find(x => x._id == this.id) ?? new Experience;
