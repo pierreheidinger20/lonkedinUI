@@ -2,10 +2,10 @@
 
 <div class="card">
     <div class="card-body">
-      <button (click)="openAddExperience()"  type="button" class="btn btn-primary px-3">
+      <button *ngIf="isAuthenticaded" (click)="openAddExperience()"  type="button" class="btn btn-primary px-3">
         <i class="fa fa-plus-square" aria-hidden="true"></i>
       </button>
-      <br>
+      <br *ngIf="isAuthenticaded">
       <br>
       <h5>Experiences</h5>
       <br>
@@ -15,11 +15,11 @@
             <h5 class="mb-1">{{experience.company}}</h5>
             <small> {{experience.startDate | date }} - {{experience.endDate | date}}
                 &nbsp;
-                <button (click)="openEditExperience(experience._id)"  type="button" class="btn btn-success px-3">
+                <button *ngIf="isAuthenticaded" (click)="openEditExperience(experience._id)"  type="button" class="btn btn-success px-3">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                 </button>
                 &nbsp;
-                <button (click)="deleteExperenci(experience._id)"  type="button" class="btn btn-danger px-3">
+                <button *ngIf="isAuthenticaded" (click)="deleteExperenci(experience._id)"  type="button" class="btn btn-danger px-3">
                   <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
             </small>

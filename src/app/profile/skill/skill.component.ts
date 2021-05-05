@@ -16,13 +16,17 @@ import { SkillService } from './skill.service';
 export class SkillComponent implements OnInit {
 
   skills:Skill[] = [];
+  isAuthenticaded:boolean = false;
 
   constructor(
     private _store:Store<AppState>,
     private modalService: NgbModal,
     private _skillService:SkillService) 
   { 
-    this._store.select(state => state.skills).subscribe(skills => this.skills = skills);
+    this._store.subscribe(state =>{
+      this.skills = state.skills;
+      this.isAuthenticaded = state.auth.isAuthenticated;
+    });
   }
 
   ngOnInit(): void {

@@ -16,13 +16,17 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 export class IntroComponent implements OnInit {
 
   profile: Profile = new Profile;
+  isAuthenticaded:boolean = false;
 
   constructor(
     private _store:Store<AppState>,
     private modalService: NgbModal
     ) 
   { 
-    this._store.select(state => state.profile).subscribe(profile => this.profile = profile);
+    this._store.subscribe((state)=>{
+      this.profile = state.profile;
+      this.isAuthenticaded = state.auth.isAuthenticated;
+    });
   }
 
   ngOnInit(): void {

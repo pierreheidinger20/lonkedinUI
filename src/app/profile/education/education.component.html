@@ -2,10 +2,10 @@
 
 <div class="card">
     <div class="card-body">
-      <button (click)="openAddEducation()"  type="button" class="btn btn-primary px-3">
+      <button *ngIf="isAuthenticaded" (click)="openAddEducation()"  type="button" class="btn btn-primary px-3">
         <i class="fa fa-plus-square" aria-hidden="true"></i>
       </button>
-      <br>
+      <br *ngIf="isAuthenticaded" >
       <br>
       <h5>Educations & Certifications</h5>
       <br>
@@ -14,11 +14,11 @@
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">{{ education.school }}</h5>
             <small> 
-                <button (click)="editEducation(education._id)"   type="button" class="btn btn-success px-3">
+                <button *ngIf="isAuthenticaded" (click)="editEducation(education._id)"   type="button" class="btn btn-success px-3">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                 </button>
                 &nbsp;
-                <button (click)="deleteEducation(education._id)"  type="button" class="btn btn-danger px-3">
+                <button *ngIf="isAuthenticaded" (click)="deleteEducation(education._id)"  type="button" class="btn btn-danger px-3">
                   <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
             </small>

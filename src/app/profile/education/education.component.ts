@@ -17,6 +17,7 @@ import { EducationService } from './education.service';
 export class EducationComponent implements OnInit {
 
   educations:Education[]= [];
+  isAuthenticaded:boolean = false;
 
   constructor(
     private _store:Store<AppState>,
@@ -24,7 +25,10 @@ export class EducationComponent implements OnInit {
     private _educationService: EducationService
     ) 
   {
-    this._store.select(state => state.educations).subscribe(educations => this.educations = educations);
+    this._store.subscribe(state =>{
+      this.educations = state.educations;
+      this.isAuthenticaded = state.auth.isAuthenticated;
+    });
   }
 
   ngOnInit(): void {
