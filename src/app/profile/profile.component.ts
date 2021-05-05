@@ -8,6 +8,8 @@ import { ExperienceService } from './experience/experience.service';
 import { addExperiences } from './experience/experience.action';
 import { EducationService } from './education/education.service';
 import { addEducations } from './education/education.action';
+import { SkillService } from './skill/skill.service';
+import { addSkills } from './skill/skill.action';
 
 @Component({
   selector: 'app-profile',
@@ -19,11 +21,13 @@ export class ProfileComponent implements OnInit {
   loadIntro:boolean = false;
   loadExperience:boolean = false;
   loadEducation:boolean = false;
+  loadSkills:boolean = false;
 
   constructor(
     private _profilesService:ProfileService,
     private _experienceService: ExperienceService,
     private _educationService: EducationService,
+    private _skillService: SkillService,
     private _store:Store<AppState>
     ) { }
 
@@ -55,7 +59,14 @@ export class ProfileComponent implements OnInit {
         
           this._store.dispatch(addEducations({ educations : educations}));
           this.loadEducation = true;
-      });
+        });
+
+        this._skillService.getSkills(auth.email ?? "")
+        .subscribe(skilss => {
+        
+          this._store.dispatch(addSkills({ skills : skilss}));
+          this.loadSkills = true;
+        });
 
       })
   }
